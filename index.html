@@ -8,20 +8,20 @@
 
   <form>
     <input type="text" ng-model="title" placeholder="Search..." >
-    <input type="submit" ng-click="getSearch()">
+    <input type="submit" ng-click="getSearch(selected())">
     <select ng-model="selected" ng-options="obj.val as obj.display for obj in things"></select>
-    {{searchPage}}
+    {{selected}}
   </form>
 
     <div layout="row" ng-repeat="data in searchData">
       <div flex><a ng-href="http://www.imdb.com/title/{{data.imdbID}}">{{data.Title}}</a></div>
-      <div flex="20">{{data.Type}}</div>
-      <div flex="20">{{data.Year}}</div>
+      <div flex="10">{{data.Type}}</div>
+      <div flex="10">{{data.Year}}</div>
     </div>
 
 Page:
     <span ng-repeat="item in page track by $index">
-        <span ng-click="getPages(item)"> {{$index+2}}</span>
+        <span ng-click="getSearch(item)"> {{$index+2}}</span>
     </span>
 
 
@@ -35,38 +35,3 @@ Page:
   <script src="service.js"></script>
 </body>
 </html>
-
-<!-- s	Yes		<empty>	Movie title to search for.
-type	No	movie, series, episode	<empty>	Type of result to return.
-y	No		<empty>	Year of release.
-r	No	json, xml	json	The data type to return.
-page New!	No	1-100	1	Page number to return.
-callback	No		<empty>	JSONP callback name.
-v	No		1	API version (reserved for future use). -->
-
-<!-- Poster: "http://ia.media-imdb.com/images/M/MV5BNTM3OTc0MzM2OV5BMl5BanBnXkFtZTYwNzUwMTI3._V1_SX300.jpg"
-Title: "Batman Begins"
-Type: "movie"
-Year: "2005"
-imdbID: "tt0372784"
-
-Actors: "Michael Keaton, Jack Nicholson, Kim Basinger, Robert Wuhl"
-Awards: "Won 1 Oscar. Another 9 wins & 22 nominations."
-Country: "USA, UK"
-Director: "Tim Burton"
-Genre: "Action, Adventure"
-Language: "English, French"
-Metascore: "66"
-Plot: "The Dark Knight of Gotham City begins his war on crime with his first major enemy being the clownishly homicidal Joker."
-Poster: "http://ia.media-imdb.com/images/M/MV5BMTYwNjAyODIyMF5BMl5BanBnXkFtZTYwNDMwMDk2._V1_SX300.jpg"
-Rated: "PG-13"
-Released: "23 Jun 1989"
-Response: "True"
-Runtime: "126 min"
-Title: "Batman"
-Type: "movie"
-Writer: "Bob Kane (Batman characters), Sam Hamm (story), Sam Hamm (screenplay), Warren Skaaren (screenplay)"
-Year: "1989"
-imdbID: "tt0096895"
-imdbRating: "7.6"
-imdbVotes: "256,000" -->
