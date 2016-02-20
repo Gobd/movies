@@ -1,10 +1,9 @@
 angular.module('app').controller('mainController', function($scope, svc){
 
-
-
-  $scope.getSearch = function(x){
-    svc.search(x)
+  $scope.getSearch = function(params, pages){
+    svc.search(params, pages)
     .then(function(response){
+      console.log(response);
       $scope.searchData = response[0];
       $scope.page = response[1];
     });
@@ -21,6 +20,6 @@ angular.module('app').controller('mainController', function($scope, svc){
   val: function(){return {type: 'episode', s: $scope.title};}},
 ];
 
-$scope.selected = $scope.things[0].val;
-
+$scope.pagesBool = true;
+$scope.selected = $scope.things[0];
 });

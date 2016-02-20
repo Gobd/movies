@@ -6,24 +6,34 @@
 </head>
 <body ng-app="app" ng-controller="mainController" ng-cloak>
 
-  <form>
-    <input type="text" ng-model="title" placeholder="Search..." >
-    <input type="submit" ng-click="getSearch(selected())">
-    <select ng-model="selected" ng-options="obj.val as obj.display for obj in things"></select>
-    {{selected}}
-  </form>
+  <div layout="row" layout-align="center center">
+      <form ng-submit="getSearch(selected.val(), pagesBool)">
+          <md-input-container>
+              <label>Search by: {{selected.display | lowercase}}</label>
+              <input ng-model="title">
+          </md-input-container>
+      </form>
+    <md-button class="md-raised" type="submit">Submit</md-button>
+        <div flex="20">
+          <md-select id="selectBox" aria-label="select" ng-model="selected" ng-model-options="{trackBy: '$value.val'}">
+            <md-option ng-value="thing" ng-repeat="thing in things">{{thing.display}}</md-option>
+          </md-select>
+        </div>
+      <div flex="10"><md-checkbox ng-model="pagesBool">Pages?</md-checkbox></div>
+      <div flex="10"><md-checkbox ng-model="postersBool">Posters?</md-checkbox></div>
+  </div>
 
-    <div layout="row" ng-repeat="data in searchData">
+
+    <div layout="row" ng-repeat="data in searchData track by $index">
       <div flex><a ng-href="http://www.imdb.com/title/{{data.imdbID}}">{{data.Title}}</a></div>
       <div flex="10">{{data.Type}}</div>
       <div flex="10">{{data.Year}}</div>
     </div>
 
-Page:
+<span ng-if="pagesBool && searchData">Page:</span>
     <span ng-repeat="item in page track by $index">
-        <span ng-click="getSearch(item)"> {{$index+2}}</span>
+        <span ng-click="getSearch(item, true)"> {{$index+2}}</span>
     </span>
-
 
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
