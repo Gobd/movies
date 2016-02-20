@@ -1,0 +1,35 @@
+#searchForm {
+  margin: 10px 0 0 0;
+}
+#selectBox {
+  width: 125px;
+  margin: -15px 0 0 0;
+}
+.md-raised {
+  margin: 30px 0 0 0;
+}
+#pagesCheck {
+  margin: 20px 0 0 0;
+}
+#postersCheck {
+  margin: 20px -10px 0 0;
+}
+@media (min-width:960px){
+  .md-raised {
+    margin-top: -10px;
+    margin-right: 25px;
+  }
+  #selectBox {
+    width: 100px;
+    margin: -15px 30px 0 0;
+  }
+  #searchForm {
+    margin: 10px 25px 0 0;
+  }
+  #pagesCheck {
+    margin: -8px 15px 0 0;
+  }
+  #postersCheck {
+    margin: -8px 0 0 0;
+  }
+}

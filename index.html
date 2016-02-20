@@ -2,25 +2,26 @@
 <html lang="en" >
 <head>
   <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+  <link rel="stylesheet" href="styles.css">
   <title>stuffs</title>
 </head>
 <body ng-app="app" ng-controller="mainController" ng-cloak>
 
-  <div layout="row" layout-align="center center">
-      <form ng-submit="getSearch(selected.val(), pagesBool)">
+  <div id="nav" layout="row" layout-sm="column" layout-xs="column" layout-align="center center">
+    <div flex="20"></div>
+      <form id="searchForm" ng-submit="getSearch(selected.val(), pagesBool)">
           <md-input-container>
               <label>Search by: {{selected.display | lowercase}}</label>
               <input ng-model="title">
           </md-input-container>
       </form>
+      <md-select id="selectBox" aria-label="select" ng-model="selected" ng-model-options="{trackBy: '$value.val'}">
+        <md-option ng-value="thing" ng-repeat="thing in things">{{thing.display}}</md-option>
+      </md-select>
     <md-button class="md-raised" type="submit">Submit</md-button>
-        <div flex="20">
-          <md-select id="selectBox" aria-label="select" ng-model="selected" ng-model-options="{trackBy: '$value.val'}">
-            <md-option ng-value="thing" ng-repeat="thing in things">{{thing.display}}</md-option>
-          </md-select>
-        </div>
-      <div flex="10"><md-checkbox ng-model="pagesBool">Pages?</md-checkbox></div>
-      <div flex="10"><md-checkbox ng-model="postersBool">Posters?</md-checkbox></div>
+          <md-checkbox id="pagesCheck" ng-model="pagesBool">Pages?</md-checkbox>
+          <md-checkbox id="postersCheck"ng-model="postersBool">Posters?</md-checkbox>
+          <div flex="20"></div>
   </div>
 
 
