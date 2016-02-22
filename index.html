@@ -3,6 +3,7 @@
 <head>
   <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
   <link rel="stylesheet" href="styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>stuffs</title>
 </head>
 <body ng-app="app" ng-controller="mainController" ng-cloak>
@@ -18,9 +19,9 @@
       <md-select id="selectBox" aria-label="select" ng-model="selected" ng-model-options="{trackBy: '$value.val'}">
         <md-option ng-value="thing" ng-repeat="thing in things">{{thing.display}}</md-option>
       </md-select>
-    <md-button class="md-raised" type="submit">Submit</md-button>
+    <md-button class="md-raised" type="submit" ng-click="getSearch(selected.val(), pagesBool)">Submit</md-button>
           <md-checkbox id="pagesCheck" ng-model="pagesBool">Pages?</md-checkbox>
-          <md-checkbox id="postersCheck"ng-model="postersBool">Posters?</md-checkbox>
+          <md-checkbox id="postersCheck" ng-model="postersBool">Posters?</md-checkbox>
           <div flex="20"></div>
   </div>
 
@@ -31,7 +32,7 @@
       <div flex="10">{{data.Year}}</div>
     </div>
 
-<span ng-if="pagesBool && searchData">Page:</span>
+<span ng-if="page">Page:</span>
     <span ng-repeat="item in page track by $index">
         <span ng-click="getSearch(item, true)"> {{$index+2}}</span>
     </span>

@@ -24,10 +24,8 @@ angular.module('app').service('svc', function($http){
           params: paramConf,
           }).then(function(response) {
             var param = response.config.params;
-            var page = Math.round(response.data.totalResults/10);
             var noPage = [];
-
-            for (var i=1; i<=page; i++) {
+            for (var i=1; i<=Math.round(response.data.totalResults/10); i++) {
               param.page = i;
               var objClone = JSON.parse(JSON.stringify(param));
               $http({
@@ -41,7 +39,7 @@ angular.module('app').service('svc', function($http){
                 });
               });
             }
-            var returnArr = [noPage, 'hi']
+            var returnArr = [noPage];
               return returnArr;
         });
       }
