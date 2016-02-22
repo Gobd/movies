@@ -31,7 +31,7 @@
       <div flex="10">{{data.Year}}</div>
     </div>
 
-<span ng-if="page">Page:</span>
+<span ng-if="page">Page: </span>
     <span ng-repeat="item in page track by $index">
         <span ng-click="getSearch(item, true)"> {{$index+2}}</span>
     </span>

@@ -1,4 +1,4 @@
-angular.module('app').controller('mainController', function($scope, $location, svc){
+angular.module('app').controller('mainController', function($scope, $location, $rootScope, svc){
 
   $scope.getSearch = function(params, pages){
     svc.search(params, pages)
@@ -8,10 +8,11 @@ angular.module('app').controller('mainController', function($scope, $location, s
     });
   };
 
-  var searchObject = $location.search();
-    if (!isEmpty(searchObject)) {
-        $scope.getSearch(searchObject, 'true');
-  }
+  $rootScope.$on('$locationChangeSuccess', function () {
+      if (!isEmpty($location.search())) {
+          $scope.getSearch($location.search(), 'true');
+      }
+  });
 
   $scope.things = [
     {display: 'All',
