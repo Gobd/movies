@@ -16,17 +16,16 @@
               <input ng-model="title">
           </md-input-container>
       </form>
-      <md-select id="selectBox" aria-label="select" ng-model="selected" ng-model-options="{trackBy: '$value.val'}">
-        <md-option ng-value="thing" ng-repeat="thing in things">{{thing.display}}</md-option>
-      </md-select>
-    <md-button class="md-raised" type="submit" ng-click="getSearch(selected.val(), pagesBool)">Submit</md-button>
-          <md-checkbox id="pagesCheck" ng-model="pagesBool">Pages?</md-checkbox>
-          <md-checkbox id="postersCheck" ng-model="postersBool">Posters?</md-checkbox>
-          <div flex="20"></div>
+          <md-select id="selectBox" aria-label="select" ng-model="selected" ng-model-options="{trackBy: '$value.val'}">
+          <md-option ng-value="thing" ng-repeat="thing in things">{{thing.display}}</md-option>
+          </md-select>
+      <md-button class="md-raised" type="submit" ng-click="getSearch(selected.val(), pagesBool)">Submit</md-button>
+      <md-checkbox id="pagesCheck" ng-model="pagesBool">Pages?</md-checkbox>
+      <md-checkbox id="postersCheck" ng-model="postersBool">Posters?</md-checkbox>
+      <div flex="20"></div>
   </div>
 
-
-    <div layout="row" ng-repeat="data in searchData track by $index">
+    <div layout="row" ng-repeat="data in searchData">
       <div flex><a ng-href="http://www.imdb.com/title/{{data.imdbID}}">{{data.Title}}</a></div>
       <div flex="10">{{data.Type}}</div>
       <div flex="10">{{data.Year}}</div>
@@ -42,6 +41,7 @@
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+  <script src="https://code.angularjs.org/1.4.8/angular-route.js"></script>
   <script src="app.js"></script>
   <script src="controller.js"></script>
   <script src="service.js"></script>

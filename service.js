@@ -1,7 +1,13 @@
-angular.module('app').service('svc', function($http){
+angular.module('app').service('svc', function($http, $location){
 
   this.search = function(paramConf, pages){
       if (pages) {
+        var url = '?';
+        for (var key in paramConf) {
+          url += key + "=" + paramConf[key] + '&';
+        }
+        console.log($location.url());
+        $location.url(url.slice(0,url.length-1));
         return  $http({
           url: 'http://www.omdbapi.com',
           method: "GET",
@@ -18,6 +24,11 @@ angular.module('app').service('svc', function($http){
             return returnArr;
         });
       } else {
+        var url = '?';
+        for (var key in paramConf) {
+          url += key + "=" + paramConf[key] + '&';
+        }
+        $location.url(url.slice(0,url.length-1));
         return $http({
           url: 'http://www.omdbapi.com',
           method: "GET",

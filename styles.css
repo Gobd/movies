@@ -14,6 +14,9 @@
 #postersCheck {
   margin: 20px -9px 0 0;
 }
+img {
+  height: 100px;
+}
 @media (min-width:960px){
   .md-raised {
     margin-top: -10px;
