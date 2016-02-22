@@ -9,7 +9,7 @@ angular.module('app').controller('mainController', function($scope, $location, s
   };
 
   var searchObject = $location.search();
-  if (!isEmpty(searchObject)) {
+    if (!isEmpty(searchObject)) {
         $scope.getSearch(searchObject, 'true');
   }
 
@@ -28,11 +28,11 @@ $scope.pagesBool = true;
 $scope.selected = $scope.things[0];
 
 function isEmpty(obj) {
-    for(var prop in obj) {
-        if(obj.hasOwnProperty(prop))
-            return false;
-    }
-    return true;
+  for (var prop in obj) {
+    if (obj.hasOwnProperty(prop))
+      return false;
+  }
+  return true;
 }
 
 });
