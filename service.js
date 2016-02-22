@@ -15,7 +15,7 @@ angular.module('app').service('svc', function($http, $location){
           }).then(function(response) {
             var param = response.config.params;
             var page = [];
-              for (i=2; i<=Math.round(response.data.totalResults/10); i++) {
+              for (i=1; i<=Math.round(response.data.totalResults/10); i++) {
                 param.page = i;
                 var objClone = JSON.parse(JSON.stringify(param));
                 page.push(objClone);
