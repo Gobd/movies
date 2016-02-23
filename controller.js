@@ -22,11 +22,11 @@ angular.module('app').controller('mainController', function($scope, $location, $
     {display: 'All',
     val: function(){return {s: $scope.title, page: 1};}},
   {display: 'Movie',
-  val: function(){return {type: 'movie', s: $scope.title};}},
+  val: function(){return {type: 'movie', s: $scope.title, page: 1};}},
     {display: 'Series',
-    val: function(){return {type: 'series', s: $scope.title};}},
+    val: function(){return {type: 'series', s: $scope.title, page: 1};}},
   {display: 'Epsiode',
-  val: function(){return {type: 'episode', s: $scope.title};}},
+  val: function(){return {type: 'episode', s: $scope.title, page: 1};}},
 ];
 
 
