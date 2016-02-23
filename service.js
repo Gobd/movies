@@ -6,7 +6,6 @@ angular.module('app').service('svc', function($http, $location){
         for (var key in paramConf) {
           url += key + "=" + paramConf[key] + '&';
         }
-        console.log($location.url());
         $location.url(url.slice(0,url.length-1));
         return  $http({
           url: 'http://www.omdbapi.com',

@@ -8,15 +8,19 @@ angular.module('app').controller('mainController', function($scope, $location, $
     });
   };
 
+  $scope.pagesBool = true;
+
   $rootScope.$on('$locationChangeSuccess', function () {
-      if (!isEmpty($location.search())) {
-          $scope.getSearch($location.search(), 'true');
+      if (!isEmpty($location.search() && $location.search().page)) {
+          $scope.getSearch($location.search(), true);
+      } else if (!isEmpty($location.search())) {
+         $scope.getSearch($location.search(), false);
       }
   });
 
   $scope.things = [
     {display: 'All',
-    val: function(){return {s: $scope.title};}},
+    val: function(){return {s: $scope.title, page: 1};}},
   {display: 'Movie',
   val: function(){return {type: 'movie', s: $scope.title};}},
     {display: 'Series',
@@ -25,7 +29,7 @@ angular.module('app').controller('mainController', function($scope, $location, $
   val: function(){return {type: 'episode', s: $scope.title};}},
 ];
 
-$scope.pagesBool = true;
+
 $scope.selected = $scope.things[0];
 
 function isEmpty(obj) {
